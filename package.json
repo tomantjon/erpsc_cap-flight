@@ -15,5 +15,8 @@
   },
   "scripts": {
     "start": "cds-serve"
-  }
+  },
+  "sapux": [
+    "app/flightfe"
+  ]
 }
