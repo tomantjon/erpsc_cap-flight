@@ -11,6 +11,12 @@ annotate service.Flight with @(
             Label : 'General Information',
             Target : '@UI.FieldGroup#GeneratedGroup1',
         },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Flight Connection',
+            ID : 'FlightConnection',
+            Target : '@UI.FieldGroup#FlightConnection1',
+        },
     ],
     UI.FieldGroup #FlightConnection : {
         $Type : 'UI.FieldGroupType',
@@ -69,6 +75,44 @@ annotate service.Flight with @(
         FlightDate,
         to_Airline.Name,
     ],
+    UI.FieldGroup #FlightConnection1 : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : to_Connection.DepartureAirport.Name,
+                Label : 'Airport of Departure',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : to_Connection.DestinationAirport.Name,
+                Label : 'Airport of Arrival',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : to_Connection.DepartureTime,
+                Label : 'Time of Departure',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : to_Connection.ArrivalTime,
+                Label : 'Time of Arrival',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : to_Connection.Distance,
+                Label : 'Distance',
+            },
+        ],
+    },
+    UI.HeaderInfo : {
+        TypeName : '',
+        TypeNamePlural : 'Flights',
+        Title : {
+            $Type : 'UI.DataField',
+            Value : ConnectionID,
+        },
+    },
 );
 annotate service.Flight with {
     AirlineID @Common.Text : {
@@ -105,6 +149,12 @@ annotate service.Airline with {
             ],
         },
         Common.ValueListWithFixedValues : true,
+    )
+};
+
+annotate service.FlightConnection with {
+    Distance @(
+        Measures.Unit : DistanceUnit,
     )
 };
 
