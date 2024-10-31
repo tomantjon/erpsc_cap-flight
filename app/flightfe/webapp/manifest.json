@@ -111,7 +111,8 @@
                     "route": "FlightObjectPage"
                   }
                 }
-              }
+              },
+              "initialLoad": "Enabled"
             }
           }
         },
